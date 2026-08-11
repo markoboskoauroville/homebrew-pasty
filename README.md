@@ -1,5 +1,17 @@
 # Homebrew tap for Mantra tools
 
+## Cascade
+
+One click window cascading per display. Splits the screen you point at in two
+and cascades its windows so every title bar stays reachable. Pairs with
+AutoRaise.
+
+```
+brew install --cask markoboskoauroville/pasty/cascade
+```
+
+Needs Accessibility permission.
+
 ## FKeys
 
 Menu bar switch between function keys and media controls. Prebuilt, no
