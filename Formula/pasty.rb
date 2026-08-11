@@ -5,9 +5,16 @@ class Pasty < Formula
   license "MIT"
 
   depends_on macos: :sonoma
-  depends_on xcode: ["15.0", :build]
 
+  # No `depends_on xcode:` on purpose. That stanza demands a full Xcode.app and
+  # aborts before anything is attempted, but SwiftPM builds this package fine
+  # with the Command Line Tools alone. The check below fails with a sentence a
+  # human can act on instead.
   def install
+    unless which("swift")
+      odie "No Swift toolchain found. Run: xcode-select --install"
+    end
+
     ENV["VERSION"] = "1.0.0"
     ENV["BUILD"] = Time.now.strftime("%Y%m%d%H%M")
     system "bash", "scripts/build_app.sh"
